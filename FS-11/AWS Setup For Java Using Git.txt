@@ -1,0 +1,24 @@
+AWS Set-up Commands for java Project Using Git hub Repository Automatically -:
+1)sudo apt update
+For install java -:
+2)sudo apt install openjdk || for specific version -> sudo apt install openjdk-17-jdk
+For Maven-:
+3)sudo apt install maven
+4)then create runner with the help of git Repository commands-:
+i) 	go to project folder in git repository 
+ii)	go to settings
+iii)	got to runner inside Action Folder in settings
+iv)	then click add new self-hosted runner
+v)	then choose linux
+vi)	then copy starting first 5 commands as shown below one by one and paste it on aws console and run one by one
+6)sudo ./svc.sh install
+7)sudo ./svc.sh start
+*)After that go Actions Tab outside Setting Tab for creating YML file
+*) then click on configure inside Java with maven after that yml file will be created in git repository
+*)after that remove pull request from yml file and also remove optional
+*)and edit ubantu-latest to self hosted in yml file then commit it
+*) then check _work folder is created or not using ls command
+*) then go inside _work folder using cd _work then enter
+*) inside _work folder go to project folder using cd command after that go to inside target folder then 
+*) use ls command for coping jar file path and put it into the yml file 
+then All set set up is done 

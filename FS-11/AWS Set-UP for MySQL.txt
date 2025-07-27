@@ -1,0 +1,52 @@
+AWS Set-up for SQL-:
+1)create ec2 instance-:
+	i)Launch instance.
+	ii)create new Key pair or existing key pair.
+	iii)then launch instance.
+2) Changes in Security
+	i) EC2> Instances> i-002945f4ee5242397
+	ii)go to security Tab.
+	iii)then go to securty group like that ->sg-0b5e90dfa31374dfd (launch-wizard-2).
+	iV)after that go to Edit inbound rules then add new rules MYSQL/Aurora or 0.0.0.0/0
+	v) save rules after that stop instance and run it again after that connect it.
+	vi)for connection -> select instance then click connect on top right corner first after that click again connect then we see that your
+	   console is open...
+3)Commands For Cosole Set-up (MySQL)
+	1)sudo apt update.
+	2)sudo apt install mysql-server.
+	3)Y -> Enter >>> If we facing any issue then connect again.
+	4)mysql --version.
+To do anything on your SQL server first you need to create root user .
+	5)sudo mysql -u root -p (Enter).
+	6)press Enter with no password means there is no password after that you are in MySql Console.
+	7)exit; (press enter).
+	8)cd /etc/ (press Enter).
+	9)ls (press enter).
+	10)cd mysql/ (press Enter).
+	11)ls (press Enter).
+	12)cd mysql.conf.d/ (press Enter) after that you see that 2 files >> i>mysql.cnf ii>mysqld.cnf after that edit mysqld.cnf because 
+	   inside mysqld.cnf file you have binding address Bydefault -127.0.0.1 and you need to change it to 0.0.0.0 (Universal ip).
+	13)nano mysqld.cnf (press Enter) this command permission is denied to edit file now we use sudo nano mysqld.cnf (press Enter).
+	14)now Scroll that and we see that bind address :127.0.0.1 now we change bind address 0.0.0.0 .
+	15)To Save this file ctl+O (press Enter).
+	16)after that ctrl+x to get out this file now we check it by using nano mysqld.cnf (press Enter) then we see your changes 
+	   and ctrl+x to get out this file.
+	17)sudo service mysql restart (press enter) for restart mysql server.
+Now your Basic Set-up is Done.
+Now we create user, password and Database. root will help this.
+	18)cd ../../../ (press enter) now you are in Base Location.
+ 	19)sudo mysql -u root -p (press enter) for connecting root.
+	20)Enter password: you have not set any password for root user so you simply press enter, now you logged in to root user
+	, now you need to create user.,
+	21)create user 'fs-rudra-11' @'%' IDENTIFIED BY 'rudra1234'; (press enter) 
+	   now user -> fs-rudra-11 will be created with rudra1234 password, now  you need to grant all privileges to this user.
+	22)GRANT ALL PRIVILEGES ON *.* TO 'fs-rudra-11' @'%' WITH GRANT OPTION; (press enter).
+	23)FLUSH PRIVILEGES; (press enter).
+//Flushing privileges in MySql is necessary when you make changes to user privileges using the GRANT, REVOKE, CREATE USER, or DROP USER statements.
+  The FLUSH PRIVELEGES commands reload the privileges from the grant tables in the my sql database, making the changes take effect immediately.
+	<<<NOW ALL SET>>> 
+	24)create database testrudradatabase; (press enter)
+	25)use testrudradatabase; (press enter)
+	26)show tables; (press enter)
+//SELECT * FROM TABLENAME;
+                  <<<<<<<<<<<<<<< Now Finished >>>>>>>>>>>>>>>>>>>>>>>
